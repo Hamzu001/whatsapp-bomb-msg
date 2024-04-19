@@ -1,20 +1,24 @@
-import { app } from './app.js'
-import qrcode from 'qrcode-terminal'
-import pkg from 'whatsapp-web.js';
+import { app } from "./app.js";
+import qrcode from "qrcode-terminal";
+import pkg from "whatsapp-web.js";
 const { Client, LocalAuth } = pkg;
 
 const PORT = process.env.PORT || 3000;
-export const client = new Client();
-
-// use this to store the session of your whatspp account 
-/*export const client = new Client({
+// export const client = new Client();
+// use this to store the session of your whatspp account
+export const client = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
     headless: true,
     handleSIGINT: false,
     args: ["--na-sandbox", "--disable-setuid-sandbox"],
   },
-}); */
+  webVersionCache: {
+    type: "remote",
+    remotePath:
+      "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
+  },
+});
 
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
