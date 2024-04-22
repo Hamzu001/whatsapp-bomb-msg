@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/msgBot/index.js"
+    "start": "node ./src/whatsappBot/index.js"
   },
   "author": "",
   "license": "ISC",
